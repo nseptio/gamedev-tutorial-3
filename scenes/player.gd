@@ -10,10 +10,13 @@ var poses_path = "res://assets/kenney_platformercharacters/PNG/Player/Poses"
 var facing_right = true
 
 @onready var sprite = $Sprite2D
+
+
 func _ready():
 	# Set the initial sprite to idle
 	sprite.texture = load(poses_path + "/player_idle.png")
-	
+
+
 func _physics_process(delta):
 	velocity.y += gravity * delta
 
@@ -39,12 +42,13 @@ func _physics_process(delta):
 		velocity.x = 0
 		if is_on_floor():
 			sprite.texture = load(poses_path + "/player_idle.png")
-		
+
 	if !is_on_floor() and velocity.y > 0:
 		sprite.texture = load(poses_path + "/player_fall.png")
 
 	sprite.flip_h = !facing_right
 	move_and_slide()
+
 
 func handle_walk_animation():
 	if is_on_floor():
