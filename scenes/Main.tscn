@@ -1,14 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsyfep1odrxje"]
+[gd_scene load_steps=5 format=3 uid="uid://dsyfep1odrxje"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Ground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dfcd63y0xcqvn" path="res://scenes/Ground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bjr2vfftjvgmy" path="res://scenes/ResetZone.tscn" id="2_3yxva"]
+[ext_resource type="PackedScene" uid="uid://b2k85ctkkxv50" path="res://scenes/Player.tscn" id="2_wck3k"]
+[ext_resource type="Script" path="res://scenes/reset_zone.gd" id="3_opffx"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Ground" parent="." instance=ExtResource("1")]
-position = Vector2(507.708, 363.86)
+position = Vector2(484, 540)
+rotation = 4.71239
 
 [node name="Ground2" parent="." instance=ExtResource("1")]
-position = Vector2(789.149, 294.054)
+position = Vector2(555, 540)
+rotation = 1.5708
 
 [node name="Ground3" parent="." instance=ExtResource("1")]
-position = Vector2(225.95, 294.562)
+position = Vector2(174, 611)
+
+[node name="Ground4" parent="." instance=ExtResource("1")]
+position = Vector2(1042, 158)
+
+[node name="ResetZone" parent="." instance=ExtResource("2_3yxva")]
+position = Vector2(-33, 734)
+script = ExtResource("3_opffx")
+
+[node name="ResetZone2" parent="." instance=ExtResource("2_3yxva")]
+position = Vector2(-168, -599)
+rotation = 1.5708
+script = ExtResource("3_opffx")
+
+[node name="ResetZone3" parent="." instance=ExtResource("2_3yxva")]
+position = Vector2(1298, 592)
+rotation = -1.5708
+script = ExtResource("3_opffx")
+
+[node name="Player" parent="." instance=ExtResource("2_wck3k")]
+position = Vector2(100, 520)
