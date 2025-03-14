@@ -7,10 +7,14 @@ extends CharacterBody2D
 @onready var animplayer = $AnimatedSprite2D
 @onready var jump_sound = $AudioStreamPlayer2D  # Reference to the AudioStreamPlayer2D node
 
-const UP = Vector2(0,-1)
+const UP = Vector2(0, -1)
+
 
 func _get_input():
-	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up")) and is_on_floor():
+	if (
+		(Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up"))
+		and is_on_floor()
+	):
 		velocity.y = JUMP_SPEED
 		jump_sound.play()
 
@@ -21,7 +25,7 @@ func _get_input():
 	if direction:
 		animation = "walk_right"
 		velocity.x = direction * SPEED
-		if direction>0:
+		if direction > 0:
 			animplayer.flip_h = false
 		else:
 			animplayer.flip_h = true
@@ -33,6 +37,6 @@ func _get_input():
 
 
 func _physics_process(delta: float) -> void:
-	velocity.y += delta*GRAVITY
+	velocity.y += delta * GRAVITY
 	_get_input()
 	move_and_slide()
