@@ -1,11 +1,26 @@
-# Game Development Tutorial 3
-## [Tutorial GitHub Page](https://csui-game-development.github.io/tutorials/tutorial-3/)
+# Game Development Tutorial 5
 
+## [Tutorial GitHub Page](https://csui-game-development.github.io/tutorials/tutorial-5/)
 
-### Latihan Mandiri: Eksplorasi dan Mekanika Pergerakan
+### Latihan Mandiri: Membuat dan Menambah Variasi Aset
+1. Membuat minimal 1 (satu) objek baru yang dapat diinteraksi oleh pemain
+   - Membuat scene `Coin.tscn` dengan root node `Area2D`
+   - Membuat SpriteFrame baru dengan SpriteSheet `coin.png` yang diperoleh dari https://laredgames.itch.io/gems-coins-free  
+   - Menambahkan `AnimatedSprite2D` untuk animasi koin berputar
+   - Menambahkan `CollisionShape2D` berbentuk oval yang menyerupai koin
+   - Menambahkan `AudioStreamPlayer2D` untuk efek suara ketika pemain mengambil koin. Audio ini diperoleh dari pack suara berikut https://kronbits.itch.io/freesfx 
+   - Menambahkan _script_ untuk menambahkan efek suara ketika pemain mengambil koin, beserta signal untuk deteksi pemain mengambil koin. Koin akan dihapus dari scene ketika pemain mengambilnya  
 
-- **Double Jump - Karakter dapat melompat dua kali.**  
-  Implementasinya dilakukan dengan membuat sebuah variabel yang menentukan jumlah maksimal lompatan di udara yang dapat dilakukan oleh karakter, lalu membuat variabel `jump_count` yang digunakan selama permainan. Ketika tombol arah atas ditekan, jika nilai variabel `jump_count` masih lebih dari 0 dan fungsi `is_on_floor()` menghasilkan false, karakter dapat melakukan lompatan tambahan dan nilai variabel `jump_count` bertambah satu. Setelah karakter menyentuh lantai (ketika `is_on_floor()` bernilai true), variabel `jump_count` di-reset kembali sesuai nilai variabel awal, yaitu `0`. Tiap kali karakter melompat, nilai variabel `jump_count` dicek apakah kurang dari nilai maksimal lompatan yang ditentukan.
+2. Menambah audio pada `Player` ketika melakukan lompatan
+   - Menambahkan _child node_ AudioStreamPlayer2D pada scene player
+   - Menambahkan efek suara lompotan yang diperoleh dari https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack?download
+   - Mengedit _player script_ untuk memainkan efek suara ketika pemain melakukan lompatan
+  
+3. Membuat minimal 1 (satu) musik latar (background music)  
+   - Musik latar yang digunakan adalah asset yang diperoleh dari repository tutorial ini 
+   - Musik latar akan dimainkan secara _loop_ pada scene `Main.tscn` ketika game dimulai
 
-- **Tampilan Karakter Sesuai Arah Gerakan**  
-  Proses ini dilakukan dengan mengambil child node `Sprite2D` menggunakan `@onready`, kemudian mengubah properti `flip_h` menjadi true saat karakter bergerak ke kiri dan false saat bergerak ke kanan. Untuk menentukan arah karakter, dibuat variabel bantuan `facing_right`.
+### Assets used
+- [Gems and Coins Free](https://laredgames.itch.io/gems-coins-free) by Lared Games
+- [Freesfx](https://kronbits.itch.io/freesfx) by Kronbits
+- [8-bit 16-bit Sound Effects Pack](https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack?download) by JDWasabi
