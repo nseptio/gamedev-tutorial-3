@@ -1,42 +1,36 @@
 extends CharacterBody2D
 
-@export var SPEED := 200
-@export var JUMP_SPEED := -400
-@export var MAX_JUMP = 2
-@export var GRAVITY := 1200
-@onready var animplayer = $AnimatedSprite2D
-@onready var jump_sound = $AudioStreamPlayer2D  # Reference to the AudioStreamPlayer2D node
-
 const UP = Vector2(0, -1)
 
+@export var speed := 200
+@export var jump_speed := -400
+@export var max_jump = 2
+@export var gravity := 1200
+
+@onready var animplayer = $AnimatedSprite2D
+@onready var jump_sound = $AudioStreamPlayer2D
 
 func _get_input():
 	if (
 		(Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up"))
 		and is_on_floor()
 	):
-		velocity.y = JUMP_SPEED
+		velocity.y = jump_speed
 		jump_sound.play()
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	var animation = "idle"
 	if direction:
 		animation = "walk_right"
-		velocity.x = direction * SPEED
-		if direction > 0:
-			animplayer.flip_h = false
-		else:
-			animplayer.flip_h = true
+		velocity.x = direction * speed
+		animplayer.flip_h = direction < 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 	animplayer.play(animation)
 
 	move_and_slide()
 
-
 func _physics_process(delta: float) -> void:
-	velocity.y += delta * GRAVITY
+	velocity.y += delta * gravity
 	_get_input()
 	move_and_slide()
