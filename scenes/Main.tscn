@@ -1,25 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsyfep1odrxje"]
+[gd_scene load_steps=7 format=3 uid="uid://dsyfep1odrxje"]
 
 [ext_resource type="PackedScene" uid="uid://dfcd63y0xcqvn" path="res://scenes/Ground.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bjr2vfftjvgmy" path="res://scenes/ResetZone.tscn" id="2_3yxva"]
 [ext_resource type="PackedScene" uid="uid://b2k85ctkkxv50" path="res://scenes/Player.tscn" id="2_wck3k"]
 [ext_resource type="Script" path="res://scenes/reset_zone.gd" id="3_opffx"]
+[ext_resource type="AudioStream" uid="uid://rrh1scdbvn23" path="res://assets/audio/assets_sound_bgm.wav" id="5_7w4i8"]
+[ext_resource type="PackedScene" uid="uid://85rqlkflawvs" path="res://scenes/Coin.tscn" id="6_rekv8"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Ground" parent="." instance=ExtResource("1")]
-position = Vector2(484, 540)
-rotation = 4.71239
+position = Vector2(575, 502)
 
 [node name="Ground2" parent="." instance=ExtResource("1")]
-position = Vector2(555, 540)
-rotation = 1.5708
+position = Vector2(939, 385)
 
 [node name="Ground3" parent="." instance=ExtResource("1")]
 position = Vector2(174, 611)
 
 [node name="Ground4" parent="." instance=ExtResource("1")]
-position = Vector2(1042, 158)
+position = Vector2(1148, 249)
 
 [node name="ResetZone" parent="." instance=ExtResource("2_3yxva")]
 position = Vector2(-33, 734)
@@ -37,3 +37,20 @@ script = ExtResource("3_opffx")
 
 [node name="Player" parent="." instance=ExtResource("2_wck3k")]
 position = Vector2(100, 520)
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7w4i8")
+volume_db = 10.0
+autoplay = true
+
+[node name="Coin" parent="." instance=ExtResource("6_rekv8")]
+position = Vector2(1059, 159)
+
+[node name="Coin2" parent="." instance=ExtResource("6_rekv8")]
+position = Vector2(572, 418)
+
+[node name="Coin3" parent="." instance=ExtResource("6_rekv8")]
+position = Vector2(900, 306)
+
+[node name="Coin4" parent="." instance=ExtResource("6_rekv8")]
+position = Vector2(260, 529)

@@ -15,4 +15,4 @@ func _on_body_entered(body):
 func reset_player(player):
 	player.global_position = player_spawn_position
 	player.velocity = Vector2.ZERO
-	player.jump_count = 0
+	#player.jump_count = 0
