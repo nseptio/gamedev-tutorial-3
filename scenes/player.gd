@@ -10,6 +10,7 @@ const UP = Vector2(0, -1)
 @onready var animplayer = $AnimatedSprite2D
 @onready var jump_sound = $AudioStreamPlayer2D
 
+
 func _get_input():
 	if (
 		(Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up"))
@@ -29,6 +30,7 @@ func _get_input():
 	animplayer.play(animation)
 
 	move_and_slide()
+
 
 func _physics_process(delta: float) -> void:
 	velocity.y += delta * gravity
